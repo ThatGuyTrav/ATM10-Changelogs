@@ -1,64 +1,309 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All The Mods 10 - Changelog</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            line-height: 1.6;
-            background-color: #0d1117;
+        /* Dark theme adaptation of the original changelog styling */
+        
+        /* Code highlighting */
+        code[class*="language-"],
+        pre[class*="language-"] {
             color: #c9d1d9;
+            background: transparent;
+            font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            text-align: left;
+            white-space: pre;
+            word-spacing: normal;
+            word-break: normal;
+            word-wrap: normal;
+            line-height: 1.4;
+            tab-size: 8;
+            hyphens: none;
         }
-        #changelog {
+
+        pre[class*="language-"] {
+            padding: 0.8em;
+            overflow: auto;
+            border-radius: 3px;
             background: #161b22;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
-        #loading {
-            text-align: center;
-            padding: 40px;
+
+        :not(pre) > code[class*="language-"] {
+            padding: 0.1em;
+            border-radius: 0.3em;
+            white-space: normal;
+            background: #161b22;
+        }
+
+        /* Main body styling */
+        html body {
+            font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #c9d1d9;
+            background-color: #0d1117;
+            overflow: initial;
+            box-sizing: border-box;
+            word-wrap: break-word;
+        }
+
+        html body > :first-child {
+            margin-top: 0;
+        }
+
+        /* Headers */
+        html body h1,
+        html body h2,
+        html body h3,
+        html body h4,
+        html body h5,
+        html body h6 {
+            line-height: 1.2;
+            margin-top: 1em;
+            margin-bottom: 16px;
+            color: #58a6ff;
+        }
+
+        html body h1 {
+            font-size: 2.25em;
+            font-weight: 300;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid #21262d;
+        }
+
+        html body h2 {
+            font-size: 1.75em;
+            font-weight: 400;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid #21262d;
+        }
+
+        html body h3 {
+            font-size: 1.5em;
+            font-weight: 500;
+        }
+
+        html body h4 {
+            font-size: 1.25em;
+            font-weight: 600;
+        }
+
+        html body h5 {
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        html body h6 {
+            font-size: 1em;
+            font-weight: 600;
             color: #8b949e;
         }
-        h1, h2, h3 { 
+
+        html body strong {
+            color: #e6edf3;
+        }
+
+        html body del {
+            color: #8b949e;
+        }
+
+        html body a:not([href]) {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        html body a {
             color: #58a6ff;
-            border-bottom: 1px solid #21262d;
-            padding-bottom: 10px;
+            text-decoration: none;
         }
-        h1 { font-size: 2em; }
-        h2 { font-size: 1.5em; margin-top: 30px; }
-        h3 { font-size: 1.2em; }
-        a { color: #58a6ff; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        pre {
-            background: #0d1117;
-            padding: 15px;
-            border-radius: 6px;
-            overflow-x: auto;
+
+        html body a:hover {
+            color: #79c0ff;
+            text-decoration: underline;
+        }
+
+        html body img {
+            max-width: 100%;
+        }
+
+        html body > p {
+            margin-top: 0;
+            margin-bottom: 16px;
+            word-wrap: break-word;
+        }
+
+        html body > ul,
+        html body > ol {
+            margin-bottom: 16px;
+        }
+
+        html body ul,
+        html body ol {
+            padding-left: 2em;
+        }
+
+        html body ul.no-list,
+        html body ol.no-list {
+            padding: 0;
+            list-style-type: none;
+        }
+
+        html body ul ul,
+        html body ul ol,
+        html body ol ol,
+        html body ol ul {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        html body li {
+            margin-bottom: 0;
+        }
+
+        html body li.task-list-item {
+            list-style: none;
+        }
+
+        html body li > p {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        html body .task-list-item-checkbox {
+            margin: 0 0.2em 0.25em -1.8em;
+            vertical-align: middle;
+        }
+
+        html body .task-list-item-checkbox:hover {
+            cursor: pointer;
+        }
+
+        html body blockquote {
+            margin: 16px 0;
+            font-size: inherit;
+            padding: 0 15px;
+            color: #8b949e;
+            background-color: #161b22;
+            border-left: 4px solid #30363d;
+        }
+
+        html body blockquote > :first-child {
+            margin-top: 0;
+        }
+
+        html body blockquote > :last-child {
+            margin-bottom: 0;
+        }
+
+        html body hr {
+            height: 4px;
+            margin: 32px 0;
+            background-color: #21262d;
+            border: 0 none;
+        }
+
+        html body table {
+            margin: 10px 0 15px 0;
+            border-collapse: collapse;
+            border-spacing: 0;
+            display: block;
+            width: 100%;
+            overflow: auto;
+            word-break: normal;
+            word-break: keep-all;
+        }
+
+        html body table th {
+            font-weight: 700;
+            color: #e6edf3;
+        }
+
+        html body table td,
+        html body table th {
             border: 1px solid #30363d;
+            padding: 6px 13px;
         }
-        code {
-            background: #0d1117;
-            padding: 2px 6px;
+
+        html body dl {
+            padding: 0;
+        }
+
+        html body dl dt {
+            padding: 0;
+            margin-top: 16px;
+            font-size: 1em;
+            font-style: italic;
+            font-weight: 700;
+        }
+
+        html body dl dd {
+            padding: 0 16px;
+            margin-bottom: 16px;
+        }
+
+        html body code {
+            font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+            font-size: 0.85em;
+            color: #e6edf3;
+            background-color: #161b22;
             border-radius: 3px;
-            font-family: 'Courier New', monospace;
+            padding: 0.2em 0.4em;
         }
-        hr {
-            border: none;
-            border-top: 1px solid #21262d;
-            margin: 30px 0;
+
+        html body pre > code {
+            padding: 0;
+            margin: 0;
+            word-break: normal;
+            white-space: pre;
+            background: transparent;
+            border: 0;
         }
-        ul, ol {
-            padding-left: 30px;
+
+        html body .highlight {
+            margin-bottom: 16px;
         }
-        li {
-            margin: 5px 0;
+
+        html body .highlight pre,
+        html body pre {
+            padding: 1em;
+            overflow: auto;
+            line-height: 1.45;
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 6px;
         }
+
+        html body .highlight pre {
+            margin-bottom: 0;
+            word-break: normal;
+        }
+
+        html body pre code,
+        html body pre tt {
+            display: inline;
+            max-width: initial;
+            padding: 0;
+            margin: 0;
+            overflow: initial;
+            line-height: inherit;
+            word-wrap: normal;
+            background-color: transparent;
+            border: 0;
+        }
+
+        html body kbd {
+            color: #e6edf3;
+            border: 1px solid #30363d;
+            border-bottom: 2px solid #21262d;
+            padding: 2px 4px;
+            background-color: #161b22;
+            border-radius: 3px;
+        }
+
+        /* Details/Summary styling */
         details {
             margin: 10px 0;
             padding: 10px;
@@ -66,51 +311,115 @@
             border-radius: 6px;
             border: 1px solid #30363d;
         }
+
         summary {
             cursor: pointer;
             font-weight: bold;
             padding: 5px;
             color: #58a6ff;
+            user-select: none;
         }
+
         summary:hover {
             background: #161b22;
+            border-radius: 3px;
         }
-        blockquote {
-            border-left: 4px solid #58a6ff;
-            margin: 10px 0;
-            padding-left: 15px;
+
+        details[open] summary {
+            margin-bottom: 10px;
+        }
+
+        /* Container styling */
+        .markdown-preview {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2em;
+            box-sizing: border-box;
+        }
+
+        .markdown-preview ul {
+            list-style: disc;
+        }
+
+        .markdown-preview ul ul {
+            list-style: circle;
+        }
+
+        .markdown-preview ul ul ul {
+            list-style: square;
+        }
+
+        .markdown-preview ol {
+            list-style: decimal;
+        }
+
+        /* Loading state */
+        #loading {
+            text-align: center;
+            padding: 40px;
             color: #8b949e;
+        }
+
+        /* Diff styling for code blocks */
+        .token.prefix.inserted {
+            color: #3fb950;
+        }
+
+        .token.prefix.deleted {
+            color: #f85149;
+        }
+
+        .token.line {
+            color: #c9d1d9;
         }
     </style>
 </head>
-<body>
-    <h1>All The Mods 10 - Latest Changelog</h1>
-    <div id="loading">Loading changelog...</div>
-    <div id="changelog"></div>
+<body for="html-export">
+    <div class="markdown-preview">
+        <div id="loading">Loading changelog...</div>
+        <div id="changelog"></div>
+    </div>
 
     <script>
         const changelogUrl = 'https://raw.githubusercontent.com/AllTheMods/ATM-10/refs/heads/main/changelogs/CHANGELOG-ATM10-5.3-5.5.md';
         
-        // Simple markdown to HTML converter
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Enhanced markdown to HTML converter that preserves HTML tags
         function markdownToHTML(markdown) {
             let html = markdown;
             
-            // Code blocks
-            html = html.replace(/```[\s\S]*?```/g, match => {
-                const code = match.slice(3, -3);
-                return `<pre><code>${escapeHtml(code)}</code></pre>`;
+            // First, protect existing HTML tags by temporarily replacing them
+            const htmlTags = [];
+            html = html.replace(/(<details[^>]*>|<\/details>|<summary>|<\/summary>|<blockquote>|<\/blockquote>)/g, (match) => {
+                const index = htmlTags.length;
+                htmlTags.push(match);
+                return `__HTML_TAG_${index}__`;
             });
             
-            // Headers
-            html = html.replace(/^### (.*$)/gm, '<h3>$1</h3>');
-            html = html.replace(/^## (.*$)/gm, '<h2>$1</h2>');
-            html = html.replace(/^# (.*$)/gm, '<h1>$1</h1>');
+            // Handle code blocks (must be done before other processing)
+            const codeBlocks = [];
+            html = html.replace(/```([\s\S]*?)```/g, (match, code) => {
+                const index = codeBlocks.length;
+                codeBlocks.push(`<pre><code>${escapeHtml(code.trim())}</code></pre>`);
+                return `__CODE_BLOCK_${index}__`;
+            });
+            
+            // Headers (must be done on lines that start with #)
+            html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+            html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+            html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
             
             // Bold
-            html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
             
             // Italic
-            html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+            html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
             
             // Links
             html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
@@ -118,27 +427,26 @@
             // Horizontal rule
             html = html.replace(/^---$/gm, '<hr>');
             
-            // Handle details/summary tags (keep them as-is since they're HTML)
-            html = html.replace(/<details([^>]*)>/g, '<details$1>');
-            html = html.replace(/<\/details>/g, '</details>');
-            html = html.replace(/<summary>(.*?)<\/summary>/g, '<summary>$1</summary>');
-            html = html.replace(/<blockquote>/g, '<blockquote>');
-            html = html.replace(/<\/blockquote>/g, '</blockquote>');
+            // Unordered lists (simple approach)
+            html = html.replace(/^- (.+)$/gm, '<li>$1</li>');
+            html = html.replace(/(<li>.*?<\/li>\n?)+/gs, (match) => {
+                return '<ul>' + match + '</ul>';
+            });
             
-            // Lists
-            html = html.replace(/^\- (.*$)/gm, '<li>$1</li>');
-            html = html.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
+            // Restore code blocks
+            codeBlocks.forEach((block, index) => {
+                html = html.replace(`__CODE_BLOCK_${index}__`, block);
+            });
             
-            // Line breaks
+            // Restore HTML tags
+            htmlTags.forEach((tag, index) => {
+                html = html.replace(`__HTML_TAG_${index}__`, tag);
+            });
+            
+            // Convert double newlines to paragraph breaks
             html = html.replace(/\n\n/g, '<br><br>');
             
             return html;
-        }
-        
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
         }
         
         async function loadChangelog() {
@@ -158,6 +466,7 @@
             }
         }
         
+        // Load changelog on page load
         loadChangelog();
     </script>
 </body>
